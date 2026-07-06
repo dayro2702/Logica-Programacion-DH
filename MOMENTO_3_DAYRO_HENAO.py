@@ -88,6 +88,21 @@ while True:
 
     elif opcion == "6":
 
+        if len(asistentes) == 0:
+            print("No hay asistentes para generar reportes.")
+        else:
+            with open("reporte_asistencia.csv", mode="w", newline="") as archivo:
+                escritor = csv.writer(archivo)
+
+                escritor.writerow(["Numero", "Nombre"])
+
+                for i in range(len(asistentes)):
+                    escritor.writerow([i, asistentes[i]])
+            
+            print("Reporte generado correctamente: reporte_asistencia.csv")
+
+    elif opcion == "7":
+
         print("Programa finalizado.")
         break
 
