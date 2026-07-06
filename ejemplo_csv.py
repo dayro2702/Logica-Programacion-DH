@@ -12,7 +12,7 @@ with open("reporte.csv", mode="w", newline="") as archivo: # w (write) = Escribi
 
     escritor = csv.writer(archivo)
 
-    escritor.writerow({"Numero Serie", "Marca", "Estado Actual"})
+    escritor.writerow({"Numero Serie", "Marca", "Estado Actual"}) # writerow (Que escriba en una sola fila)
 
     for equipo in equipos:
         escritor.writerow([equipo["serie"], equipo["marca"], equipo["estado"]])

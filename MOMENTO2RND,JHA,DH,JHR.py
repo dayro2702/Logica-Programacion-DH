@@ -1,3 +1,5 @@
+import csv
+
 # Sistema de Control de Entrada - Eventos VIP
 asistentes = []
 cupo_maximo = 20
@@ -10,7 +12,8 @@ while True:
     print("3. Editar nombre")
     print("4. Eliminar persona")
     print("5. Ver estadísticas")
-    print("6. Salir")
+    print("6. Generar reporte")
+    print("7. Salir")
 
     opcion = input("Seleccione una opción: ")
 
@@ -84,6 +87,21 @@ while True:
         print("Cupos disponibles:", cupo_maximo - len(asistentes))
 
     elif opcion == "6":
+
+        if len(asistentes) == 0:
+            print("No hay asistentes para generar reportes.")
+        else:
+            with open("reporte_asistencia.csv", mode="w", newline="") as archivo:
+                escritor = csv.writer(archivo)
+
+                escritor.writerow(["Numero", "Nombre"])
+
+                for i in range(len(asistentes)):
+                    escritor.writerow([i, asistentes[i]])
+            
+            print("Reporte generado correctamente: reporte_asistencia.csv")
+
+    elif opcion == "7":
 
         print("Programa finalizado.")
         break
